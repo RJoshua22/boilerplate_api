@@ -1,0 +1,26 @@
+<div class="app-container" [ngClass]="{ 'bg-light': account }">
+    <div class="app-container" [ngClass]="{ 'bg-light': account }">
+        <!-- main nav -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="account">
+            <div class="navbar-nav mr-auto">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link">Dashboard</a>
+                <a routerLink="/profile" routerLinkActive="active" class="nav-item nav-link">Profile</a>
+                <a *ngIf="account.role === Role.Staff" routerLink="profile/update" routerLinkActive="active" class="nav-item nav-link">Update Profile</a>
+                <a *ngIf="account.role === Role.User" routerLink="profile/update" routerLinkActive="active" class="nav-item nav-link">Update Profile</a>
+                <a *ngIf="account.role === Role.Admin" routerLink="admin/accounts" routerLinkActive="active" class="nav-item nav-link">Manage Accounts</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a (click)="logout()" class="nav-item nav-link">Logout</a>
+            </div>
+        </nav>
+        
+        <!-- subnav router outlet -->
+        <router-outlet name="subnav"></router-outlet>
+    
+        <!-- global alert -->
+        <alert></alert>
+    
+        <!-- main router outlet -->
+        <router-outlet></router-outlet>
+    </div>
+    

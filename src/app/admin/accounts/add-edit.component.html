@@ -1,0 +1,145 @@
+<br>
+<br>
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+    <div style="max-width: 600px; width: 100%; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background: white;">
+        <h1 style="font-size: 2.5rem; text-align: center; color: #333; margin-bottom: 20px;">{{ isAddMode ? 'Create Account' : 'Edit Account' }}</h1>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label style="font-size: 1.25rem;">Title</label>
+                    <select formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="font-size: 1rem;">
+                        <option value=""></option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Title is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label style="font-size: 1.25rem;">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" style="font-size: 1rem;" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label style="font-size: 1.25rem;">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" style="font-size: 1rem;" />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                    <div *ngIf="f.gender.errors.required">Gender is required</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-7">
+                    <label style="font-size: 1.25rem;">Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" style="font-size: 1rem;" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label style="font-size: 1.25rem;">Role</label>
+                    <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" style="font-size: 1rem;">
+                        <option value=""></option>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Staff">Staff</option>
+                    </select>
+                    <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                        <div *ngIf="f.role.errors.required">Role is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text" formControlName="contactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactNumber.errors }" />
+                <div *ngIf="submitted && f.contactNumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.contactNumber.errors.required">Contact Number is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Fields</label>
+                <select formControlName="fields" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fields.errors }">
+                    <option value=""></option>
+                    <option value="Barista">Barista</option>
+                    <option value="Restuarant Manager">Restuarant Manager</option>
+                    <option value="Business Administrator">Business Administrator</option>
+                    <option value="Cashier">Cashier</option>
+                    <option value="Cafe Manager">Cafe Manager</option>
+                    <option value="Manager">Manager</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Position</label>
+                <select formControlName="position" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.position.errors }">
+                    <option value=""></option>
+                    <option value="Barista">Barista</option>
+                    <option value="Restuarant Manager">Restuarant Manager</option>
+                    <option value="Business Administrator">Business Administrator</option>
+                    <option value="Cashier">Cashier</option>
+                    <option value="Janitor">Janitor</option>
+                    <option value="Cafe Manager">Cafe Manager</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Owner">Owner</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <select formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+                    <option value=""></option>
+                    <option value="Enabled">Enabled</option>
+                    <option value="Disabled">Disabled</option>
+                </select>
+                <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                    <div *ngIf="f.status.errors.required">Status is required</div>
+                </div>
+            </div>
+            <div *ngIf="!isAddMode">
+                <h3 class="pt-3" style="font-size: 1.5rem;">Change Password</h3>
+                <p style="font-size: 1.25rem;">Leave blank to keep the same password</p>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label style="font-size: 1.25rem;">Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" style="font-size: 1rem;" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label style="font-size: 1.25rem;">Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" style="font-size: 1rem;" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary" style="font-size: 1.25rem;">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Save
+                </button>
+                <a routerLink="/admin/accounts" class="btn btn-link" style="font-size: 1.25rem;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
